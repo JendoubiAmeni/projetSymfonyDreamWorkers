@@ -1,0 +1,28 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="my-5 text-primary text-uppercase text-center">Make a Reservation</h1>
+    <div class="d-flex justify-content-center" style="margin-bottom:150px">
+        {{ form_start(form, {'id': 'reservation-form'}) }}
+        <div class="row g-3" style="width:700px">
+            {{ form_row(form.date_res, {
+                'attr': {
+                    'min': date()|date('Y-m-d')
+                }
+            }) }}  
+            {{ form_row(form.heure_res) }}
+            {{ form_row(form.prix) }}
+            {{ form_row(form.type_ticket) }}
+            {{ form_row(form.nb_place, {'attr': {'max': 5}}) }}
+            {{ form_row(form.prix_totale, {'attr': {'readonly': true}}) }}
+            <p id="xxp"></p>
+        </div>    
+<button id="reservation-btn" class="btn btn-primary w-100 py-3 mt-3" type="submit">Réservez</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+
+

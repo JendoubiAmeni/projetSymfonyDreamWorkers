@@ -1,0 +1,27 @@
+
+#[Route('/reservation', name: 'app_reservation')]
+    public function reservation(Request $request , PersistenceManagerRegistry $doctrine)
+    {
+        $reservation = new Reservation();
+        $form = $this->createForm(ReservationType::class, $reservation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($reservation);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_home');
+        }
+
+        return $this->render('reservation/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+    #[Route('/reservationb', name: 'app_reservationb')]
+    public function reservation(Request $request , PersistenceManagerRegistry $doctrine)
+    {
+        return $this->render('reservation/index.html.twig', [
+            'reservation' => $ticketRepository->findAll(),
+        ]);
+    }

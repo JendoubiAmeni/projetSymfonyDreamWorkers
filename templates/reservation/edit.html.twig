@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Reservation{% endblock %}
+
+{% block body %}
+<h1 class="my-5 text-primary text-uppercase text-center">Make a Reservation</h1>
+    <div class="d-flex justify-content-center" style="margin-bottom:150px">
+
+    {{ include('reservation/_form.html.twig', {'button_label': 'Update'}) }}
+    
+    </div>
+    
+{% endblock %}
